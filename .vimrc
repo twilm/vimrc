@@ -5,23 +5,23 @@
 "|  |_|\___/|_| |_| |_|___/   \_/ |_|_| |_| |_|_|  \___| |
 "|__ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ 
 
+
 syntax on
 :set number
 :set relativenumber
 :set nocompatible
-:set tabstop=4      
 nnoremap <space> :
-:set background=dark
-colorscheme darkblue
+set background=dark
+colorscheme pablo
 """enables type file detection and allows any related plugins to be started
 filetype on
 filetype plugin on
 
 """For showing tabs
 "use 4 spaces for tabs
-set tabstop=4 softtabstop=4 shiftwidth=4
+:set tabstop=4 softtabstop=4 shiftwidth=4 
 " display indentation guides
-set list listchars=tab:❘-,trail:·,extends:»,precedes:«,nbsp:×
+:set list listchars=tab:❘-,trail:·,extends:»,precedes:«,nbsp:×
 " convert spaces to tabs when reading file
 autocmd! bufreadpost * set noexpandtab | retab! 4
 " convert tabs to spaces before writing file
@@ -29,7 +29,32 @@ autocmd! bufwritepre * set expandtab | retab! 4
 " convert spaces to tabs after writing file (to show guides again)
 autocmd! bufwritepost * set noexpandtab | retab! 4
 
+
+"Pair Completion
+""{}
+inoremap {      {}<Left>
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap {{     {
+inoremap {}     {}
+""QuotationMarks
+inoremap "      ""<Left>
+inoremap "<CR>  "<CR>"<Esc>0
+""QuotationMarks
+inoremap '      ''<Left>
+inoremap '<CR>  '<CR>"<Esc>0
+""[]
+inoremap [      []<Left>
+inoremap [<CR>  [<CR>]<Esc>O
+inoremap [[     [
+inoremap []     []
+""()
+inoremap (      ()<Left>
+inoremap (<CR>  (<CR>)<Esc>O
+inoremap ((     (
+inoremap ()     ()
+
 call plug#begin('~/.vim/plugged')
+
 call plug#begin()
 Plug 'https://github.com/WolfgangMehner/git-support'
 Plug 'junegunn/vim-easy-align'
@@ -52,4 +77,3 @@ nmap <F8> :TagbarToggle<CR>
 
 xmap ga <Plug>(EasyAlign) 
 nmap ga <Plug>(EasyAlign)
-
